@@ -1,8 +1,8 @@
-# Apple Global Pricing Analysis
+# Apple Product Pricing Intelligence
 ![](https://github.com/DQuanBui/apple_pricing_project/blob/main/apple.webp)
 ## Project Overview
 
-The **Apple Global Pricing Analysis** project is an end-to-end data analytics and machine learning solution that explores how Apple product prices vary across countries, product categories, and technical specifications.
+The **Apple Product Pricing Intelligence** project is an end-to-end data analytics and machine learning solution that explores how Apple product prices vary across countries, product categories, and technical specifications.
 
 The project transforms raw pricing data into clear business insights through data cleaning, exploratory data analysis, interactive visualizations, predictive modeling, and a deployed Streamlit application.
 
