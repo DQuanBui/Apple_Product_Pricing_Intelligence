@@ -1,18 +1,20 @@
 # Apple Product Pricing Intelligence
 ![](https://github.com/DQuanBui/apple_pricing_project/blob/main/apple.webp)
+
 ## Project Overview
 
-The **Apple Product Pricing Intelligence** project is an end-to-end data analytics and machine learning solution that explores how Apple product prices vary across countries, product categories, and technical specifications.
+The **Apple Product Pricing Intelligence** project is an end-to-end data analytics and machine learning solution that analyzes 80,000 Apple product pricing observations across Amazon and Flipkart to evaluate price trends, discounts, product depreciation, marketplace differences, and sale-event performance. It also develops 7- and 30-day forecasting models and deploys the results through an interactive Streamlit pricing-intelligence application.
 
 The project transforms raw pricing data into clear business insights through data cleaning, exploratory data analysis, interactive visualizations, predictive modeling, and a deployed Streamlit application.
 
 This project demonstrates practical skills in Python, data analysis, machine learning, dashboard development, business insight generation, and cloud deployment.
+- **Dataset Link:** [Apple Products Pricing Dataset](https://www.kaggle.com/datasets/ashyou09/apple-products-pricing-dataset-2020-2026)
 
 ## Live Application
 
 Explore the interactive Streamlit application:
 
-**Website:** https://applepricing.streamlit.app/
+- **Website:** https://applepricing.streamlit.app/
 
 ## Project Objectives
 
