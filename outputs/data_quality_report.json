@@ -6,7 +6,7 @@
     "exact_duplicates_original": 0,
     "additional_business_key_rows": 21389,
     "discount_mismatch_rows": 0,
-    "future_dated_rows": 1322,
+    "future_dated_rows": 489,
     "earliest_date": "2020-09-19",
     "latest_date": "2026-07-31",
     "models": 31,
