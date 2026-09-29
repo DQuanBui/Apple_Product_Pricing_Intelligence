@@ -8,7 +8,7 @@ The **Apple Product Pricing Intelligence** project is an end-to-end data analyti
 The project transforms raw pricing data into clear business insights through data cleaning, exploratory data analysis, interactive visualizations, predictive modeling, and a deployed Streamlit application.
 
 This project demonstrates practical skills in Python, data analysis, machine learning, dashboard development, business insight generation, and cloud deployment.
-- **Dataset Link:** [Apple Products Pricing Dataset](https://www.kaggle.com/datasets/ashyou09/apple-products-pricing-dataset-2020-2026)
+- **Dataset Link:** [Apple Products Pricing Dataset](https://www.kaggle.com/datasets/rhlvrm34/apple-dataset)
 
 ## Live Application
 
@@ -20,7 +20,6 @@ Explore the interactive Streamlit application:
 
 The project was developed to answer key pricing questions, including:
 
-- Which countries have the highest and lowest Apple product prices?
 - Which product categories show the greatest international price differences?
 - How do storage, memory, product type, and other specifications affect price?
 - Which markets offer stronger relative value for Apple products?
