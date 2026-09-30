@@ -1,0 +1,35 @@
+name: apple_pricing
+version: "2.0.0"
+config-version: 2
+profile: apple_pricing
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages", "logs"]
+
+# The same SQL runs on DuckDB (dev, local) and Snowflake (prod). Anything
+# dialect-specific goes through dbt's cross-database macros (dbt.datediff, ...).
+
+models:
+  apple_pricing:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  apple_pricing:
+    +schema: reference
+    product_catalog:
+      +column_types:
+        release_date: date
+        generation: integer
+        storage_gb: integer

@@ -19,6 +19,7 @@ data/lake/
 dbt/target/
 dbt/logs/
 dbt/dbt_packages/
+dbt/.user.yml
 logs/
 
 # Trained model binaries (large; metrics + predictions are exported to data/marts/)

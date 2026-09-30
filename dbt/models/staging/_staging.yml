@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: stg_apple_prices
+    description: >
+      Cleaned listing snapshots. Standardises labels (condition -> New / Refurbished,
+      missing sale event -> 'No Event'), recomputes the discount from prices, drops
+      INR columns (USD is the analysis currency) and exact duplicates.
+    columns:
+      - name: price_observation_id
+        description: Hash of the snapshot's identifying attributes.
+        data_tests: [unique, not_null]
+      - name: price_date
+        data_tests: [not_null]
+      - name: platform
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Amazon", "Flipkart"]
+      - name: condition
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["New", "Refurbished"]
+      - name: sale_event
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["No Event", "Black Friday", "Big Billion Days", "Great Indian Festival", "Prime Day"]
+      - name: stock_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["In Stock", "Low Stock", "Out of Stock"]
+      - name: model_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('product_catalog')
+                field: model_name
+      - name: launch_price_usd
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 1
+      - name: current_price_usd
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+      - name: rating
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 5
+      - name: reviews_count
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 0

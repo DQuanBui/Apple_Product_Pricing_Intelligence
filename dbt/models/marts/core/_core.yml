@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: Conformed product dimension (catalog attributes + observed MSRP and coverage).
+    columns:
+      - name: product_key
+        data_tests: [unique, not_null]
+      - name: model_name
+        data_tests: [unique, not_null]
+      - name: msrp_usd
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+
+  - name: dim_date
+    description: Calendar dimension for the observation window.
+    columns:
+      - name: date_day
+        data_tests: [unique, not_null]
+
+  - name: fct_price_observations
+    description: Listing-snapshot fact (most granular). Use for distributions and statistical tests.
+    columns:
+      - name: price_observation_id
+        data_tests: [unique, not_null]
+      - name: model_name
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: model_name
+      - name: price_date
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: days_since_release
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: -1
+
+  - name: fct_daily_market_prices
+    description: >
+      Series-day fact (platform x model x condition x date). Adds release-relative age,
+      successor-release flag, and a leakage-free 30-observation non-event baseline price.
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [price_date, platform, model_name, condition]
+    columns:
+      - name: series_id
+        data_tests: [not_null]
+      - name: model_name
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: model_name
+      - name: price_index
+        description: Median price / launch MSRP x 100 (100 = trading at MSRP).
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 10
+                max_value: 150
+      - name: savings_vs_baseline_pct
+        description: Positive = cheaper than the series' recent normal (non-event) price.
+      - name: is_latest_observation
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false

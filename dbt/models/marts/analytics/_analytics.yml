@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: mart_platform_price_gap
+    description: Matched Amazon-vs-Flipkart pairs (same model, condition, and day).
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [price_date, model_name, condition]
+    columns:
+      - name: cheaper_platform
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Amazon", "Flipkart", "Tie"]
+
+  - name: mart_sale_event_impact
+    description: >
+      Sale-event savings by category, measured two ways - vs launch MSRP (headline)
+      and vs the series' recent non-event price (what a buyer actually saves).
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [sale_event, product_category]
+
+  - name: mart_depreciation_curve
+    description: Median price index by category, condition, and months since official release.
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [product_category, condition, months_since_release]
+
+  - name: mart_successor_launch_impact
+    description: Price-index change of a model around its successor's release date.
+    columns:
+      - name: model_name
+        data_tests: [unique, not_null]
+
+  - name: mart_model_scorecard
+    description: One row per model with price, retention, volatility, platform, and refurbished metrics.
+    columns:
+      - name: model_name
+        data_tests: [unique, not_null]
+      - name: current_price_usd
+        data_tests: [not_null]

@@ -1,0 +1,24 @@
+# No secrets live in this file - everything sensitive comes from environment variables.
+#   dev  (default): local DuckDB file, zero setup, used by CI and the Streamlit exports
+#   prod          : Snowflake, loaded from S3 (see infra/snowflake/)
+apple_pricing:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH', '../warehouse/apple_pricing.duckdb') }}"
+      schema: main
+      threads: 4
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT', '') }}"
+      user: "{{ env_var('SNOWFLAKE_USER', '') }}"
+      # Key-pair auth is recommended for service users; password works for trial accounts.
+      password: "{{ env_var('SNOWFLAKE_PASSWORD', '') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE', 'TRANSFORMER') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'TRANSFORM_WH') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'APPLE_PRICING') }}"
+      schema: ANALYTICS
+      threads: 8
+      client_session_keep_alive: false

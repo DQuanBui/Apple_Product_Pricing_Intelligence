@@ -1,0 +1,27 @@
+version: 2
+
+seeds:
+  - name: product_catalog
+    description: >
+      Hand-maintained reference data for the 31 tracked Apple models: product line,
+      tier, generation, chip, and official US release date. `successor_model_name`
+      is the next model of the same line *that is tracked in this dataset*
+      (e.g. the iPhone Pro line alternates Pro / Pro Max SKUs), which powers the
+      successor-launch analysis.
+    columns:
+      - name: model_name
+        data_tests: [unique, not_null]
+      - name: product_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["iPhone", "iPad", "Mac", "Watch"]
+      - name: release_date
+        data_tests: [not_null]
+      - name: successor_model_name
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('product_catalog')
+                field: model_name

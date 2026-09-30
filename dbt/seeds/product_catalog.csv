@@ -1,0 +1,32 @@
+model_name,product_category,product_line,tier,generation,chip,storage_gb,display_size,release_date,successor_model_name
+MacBook Air M1 256GB,Mac,MacBook Air,Air,1,M1,256,13.3-inch,2020-11-17,MacBook Air M2 256GB
+MacBook Air M2 256GB,Mac,MacBook Air,Air,2,M2,256,13.6-inch,2022-07-15,MacBook Air M3 256GB
+MacBook Air M3 256GB,Mac,MacBook Air,Air,3,M3,256,13.6-inch,2024-03-08,
+MacBook Pro 14-inch M1 Pro 512GB,Mac,MacBook Pro 14,Pro,1,M1 Pro,512,14.2-inch,2021-10-26,MacBook Pro 14-inch M2 Pro 512GB
+MacBook Pro 14-inch M2 Pro 512GB,Mac,MacBook Pro 14,Pro,2,M2 Pro,512,14.2-inch,2023-01-24,MacBook Pro 14-inch M3 Pro 512GB
+MacBook Pro 14-inch M3 Pro 512GB,Mac,MacBook Pro 14,Pro,3,M3 Pro,512,14.2-inch,2023-11-07,MacBook Pro 14-inch M4 Pro 512GB
+MacBook Pro 14-inch M4 Pro 512GB,Mac,MacBook Pro 14,Pro,4,M4 Pro,512,14.2-inch,2024-11-08,
+Apple Watch Series 6 (44mm),Watch,Apple Watch Series,Base,6,S6,,44mm,2020-09-18,Apple Watch Series 7 (45mm)
+Apple Watch Series 7 (45mm),Watch,Apple Watch Series,Base,7,S7,,45mm,2021-10-15,Apple Watch Series 8 (45mm)
+Apple Watch Series 8 (45mm),Watch,Apple Watch Series,Base,8,S8,,45mm,2022-09-16,Apple Watch Series 9 (45mm)
+Apple Watch Series 9 (45mm),Watch,Apple Watch Series,Base,9,S9,,45mm,2023-09-22,Apple Watch Series X (45mm)
+Apple Watch Series X (45mm),Watch,Apple Watch Series,Base,10,S10,,45mm,2024-09-20,
+Apple Watch Ultra,Watch,Apple Watch Ultra,Ultra,1,S8,,49mm,2022-09-23,Apple Watch Ultra 2
+Apple Watch Ultra 2,Watch,Apple Watch Ultra,Ultra,2,S9,,49mm,2023-09-22,
+iPad (9th Gen) 64GB,iPad,iPad,Base,9,A13,64,10.2-inch,2021-09-24,
+iPad Air (4th Gen) 64GB,iPad,iPad Air,Air,4,A14,64,10.9-inch,2020-10-23,iPad Air (5th Gen) 64GB
+iPad Air (5th Gen) 64GB,iPad,iPad Air,Air,5,M1,64,10.9-inch,2022-03-18,
+iPad Pro 11-inch (M1) 128GB,iPad,iPad Pro 11,Pro,3,M1,128,11-inch,2021-05-21,iPad Pro 11-inch (M4) 256GB
+iPad Pro 11-inch (M4) 256GB,iPad,iPad Pro 11,Pro,5,M4,256,11-inch,2024-05-15,
+iPad Pro 12.9-inch (M2) 256GB,iPad,iPad Pro 12.9,Pro,6,M2,256,12.9-inch,2022-10-26,
+iPhone 12 64GB,iPhone,iPhone,Base,12,A14,64,6.1-inch,2020-10-23,iPhone 13 128GB
+iPhone 13 128GB,iPhone,iPhone,Base,13,A15,128,6.1-inch,2021-09-24,iPhone 14 128GB
+iPhone 14 128GB,iPhone,iPhone,Base,14,A15,128,6.1-inch,2022-09-16,iPhone 15 128GB
+iPhone 15 128GB,iPhone,iPhone,Base,15,A16,128,6.1-inch,2023-09-22,iPhone 16 128GB
+iPhone 16 128GB,iPhone,iPhone,Base,16,A18,128,6.1-inch,2024-09-20,iPhone 17 128GB
+iPhone 17 128GB,iPhone,iPhone,Base,17,A19,128,6.3-inch,2025-09-19,
+iPhone 12 Pro 128GB,iPhone,iPhone Pro,Pro,12,A14,128,6.1-inch,2020-10-23,iPhone 13 Pro Max 256GB
+iPhone 13 Pro Max 256GB,iPhone,iPhone Pro,Pro Max,13,A15,256,6.7-inch,2021-09-24,iPhone 14 Pro 128GB
+iPhone 14 Pro 128GB,iPhone,iPhone Pro,Pro,14,A16,128,6.1-inch,2022-09-16,iPhone 15 Pro Max 256GB
+iPhone 15 Pro Max 256GB,iPhone,iPhone Pro,Pro Max,15,A17 Pro,256,6.7-inch,2023-09-22,iPhone 16 Pro 256GB
+iPhone 16 Pro 256GB,iPhone,iPhone Pro,Pro,16,A18 Pro,256,6.3-inch,2024-09-20,

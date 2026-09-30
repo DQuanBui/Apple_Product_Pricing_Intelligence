@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_daily_market_prices
+    description: Listing snapshots rolled up to one row per series-day (platform x model x condition x date).
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [price_date, platform, model_name, condition]
+    columns:
+      - name: listing_count
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 1
+      - name: in_stock_share
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
