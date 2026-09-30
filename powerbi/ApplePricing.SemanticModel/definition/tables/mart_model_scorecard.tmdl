@@ -1,0 +1,198 @@
+table mart_model_scorecard
+	lineageTag: cbd05d53-a867-5de4-a9ec-994902638261
+
+	measure 'Launch Price' = AVERAGE ( mart_model_scorecard[msrp_usd] )
+		formatString: \$#,0
+		displayFolder: Scorecard
+		lineageTag: 5d1dd6a9-f38a-52cd-bbb2-e1bbfa94f062
+
+	measure 'Current Price' = AVERAGE ( mart_model_scorecard[current_price_usd] )
+		formatString: \$#,0
+		displayFolder: Scorecard
+		lineageTag: 12352c09-17d0-51dd-a923-c28741a4f260
+
+	measure 'Current Price Index' = AVERAGE ( mart_model_scorecard[current_price_index] )
+		formatString: 0.0
+		displayFolder: Scorecard
+		lineageTag: 24bc4a31-2988-53f3-93c6-a45e1bb1511d
+
+	measure 'Refurbished Discount %' = AVERAGE ( mart_model_scorecard[refurbished_discount_pct] ) / 100
+		formatString: 0.0%
+		displayFolder: Scorecard
+		lineageTag: 89023426-4c7f-519d-a6b8-bd48904019b4
+
+	measure 'Monthly Depreciation (pts)' = AVERAGE ( mart_model_scorecard[avg_monthly_depreciation_pts] )
+		formatString: 0.00
+		displayFolder: Scorecard
+		lineageTag: 6a732f05-733a-5d43-9415-415eba28a4d6
+
+	column product_key
+		dataType: int64
+		lineageTag: 7a60e585-9053-533d-92b3-94fa5db8c513
+		summarizeBy: none
+		sourceColumn: product_key
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: 4f47bd09-67fa-5ba2-b62c-a145c7dad53c
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: ade6c8a4-80c0-5fd4-8860-b2b15b14280c
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column product_line
+		dataType: string
+		lineageTag: 94cb336e-016f-5ca2-bd63-8d4bf57489a8
+		summarizeBy: none
+		sourceColumn: product_line
+
+		annotation SummarizationSetBy = User
+
+	column tier
+		dataType: string
+		lineageTag: e2c4a840-ea8c-5d53-ba60-a422924f4e2d
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = User
+
+	column release_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 726bffcb-0634-5c05-863a-f14341407b48
+		summarizeBy: none
+		sourceColumn: release_date
+
+		annotation SummarizationSetBy = User
+
+	column msrp_usd
+		dataType: double
+		lineageTag: 04dabb4d-7058-5e14-b59e-8d09bcdf9e76
+		summarizeBy: none
+		sourceColumn: msrp_usd
+
+		annotation SummarizationSetBy = User
+
+	column months_since_release
+		dataType: int64
+		lineageTag: e099604c-a98a-558a-bdeb-819d293f30cf
+		summarizeBy: none
+		sourceColumn: months_since_release
+
+		annotation SummarizationSetBy = User
+
+	column current_price_usd
+		dataType: double
+		lineageTag: 8b45ccac-0e28-57fd-9f49-8864d59915bc
+		summarizeBy: none
+		sourceColumn: current_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column current_price_index
+		dataType: double
+		lineageTag: 72da85f6-f507-59cc-a930-32d7da84cecd
+		summarizeBy: none
+		sourceColumn: current_price_index
+
+		annotation SummarizationSetBy = User
+
+	column avg_monthly_depreciation_pts
+		dataType: double
+		lineageTag: d35560bb-72b8-5540-9744-7c0334249451
+		summarizeBy: none
+		sourceColumn: avg_monthly_depreciation_pts
+
+		annotation SummarizationSetBy = User
+
+	column series_days
+		dataType: int64
+		lineageTag: cac24f04-5094-55cd-9c93-0b99e2a6687e
+		summarizeBy: none
+		sourceColumn: series_days
+
+		annotation SummarizationSetBy = User
+
+	column avg_price_index
+		dataType: double
+		lineageTag: 58a1e72f-0514-5b92-b306-7d93ab2913a9
+		summarizeBy: none
+		sourceColumn: avg_price_index
+
+		annotation SummarizationSetBy = User
+
+	column pct_days_above_msrp
+		dataType: double
+		lineageTag: 7251c092-0622-5b0a-b566-5f0bfed13d87
+		summarizeBy: none
+		sourceColumn: pct_days_above_msrp
+
+		annotation SummarizationSetBy = User
+
+	column avg_event_savings_pct
+		dataType: double
+		lineageTag: 2ba56b18-3f74-5650-ae57-e2c4dcb587ca
+		summarizeBy: none
+		sourceColumn: avg_event_savings_pct
+
+		annotation SummarizationSetBy = User
+
+	column price_volatility_pct
+		dataType: double
+		lineageTag: 16178167-4c26-521a-b48f-0d0b0c71713e
+		summarizeBy: none
+		sourceColumn: price_volatility_pct
+
+		annotation SummarizationSetBy = User
+
+	column pct_days_amazon_cheaper
+		dataType: double
+		lineageTag: 267f125a-678c-5e7f-99f3-4bf2582585e2
+		summarizeBy: none
+		sourceColumn: pct_days_amazon_cheaper
+
+		annotation SummarizationSetBy = User
+
+	column avg_amazon_vs_flipkart_pct
+		dataType: double
+		lineageTag: 35c7e0a1-715f-5315-9d01-aa1a4989740e
+		summarizeBy: none
+		sourceColumn: avg_amazon_vs_flipkart_pct
+
+		annotation SummarizationSetBy = User
+
+	column refurbished_discount_pct
+		dataType: double
+		lineageTag: 4da722c1-085e-5bcd-80a3-d00526f4c102
+		summarizeBy: none
+		sourceColumn: refurbished_discount_pct
+
+		annotation SummarizationSetBy = User
+
+	column has_successor
+		dataType: int64
+		lineageTag: b78783ef-cf3c-5ee3-a8ef-1f8c5b5c9b10
+		summarizeBy: none
+		sourceColumn: has_successor
+
+		annotation SummarizationSetBy = User
+
+	partition mart_model_scorecard = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_model_scorecard.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

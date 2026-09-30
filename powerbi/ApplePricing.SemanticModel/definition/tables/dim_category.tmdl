@@ -1,0 +1,21 @@
+table dim_category
+	lineageTag: 55590589-76b9-5eb0-9a53-fcd164ef3ac5
+
+	column product_category
+		dataType: string
+		lineageTag: 90a88727-f67c-57db-97a8-e299f2845b47
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	partition dim_category = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "dim_product.parquet" ) ),
+				    Categories = Table.Distinct ( Table.SelectColumns ( Source, { "product_category" } ) )
+				in
+				    Categories
+
+	annotation PBI_ResultType = Table

@@ -135,7 +135,11 @@ The Streamlit application allows users to:
 - **AI Analyst:** ask questions in plain English. Claude writes read-only SQL against the marts in a sandboxed in-memory DuckDB (a single SELECT only, with file access disabled and configuration locked) and shows every query it ran.
 - **Data & Pipeline:** see the pipeline lineage, the latest dbt build results, and the data dictionary
 
-Sidebar filters for category, platform, condition, and date range apply across tabs. A Power BI report specification (star schema, DAX measures, and pages) is in [`powerbi/`](powerbi/README.md).
+Sidebar filters for category, platform, condition, and date range apply across tabs.
+
+**Power BI report.** [`powerbi/ApplePricing.pbip`](powerbi/README.md) is a six-page interactive Power BI report:
+- Pages: Executive Overview, Price Explorer, Life Cycle & Launches, Sale Events, Marketplaces & Condition, and Forecasts & Buy or Wait.
+- It is built on a star-schema semantic model with 40+ DAX measures and stored as a Power BI Project (TMDL and PBIR), so the model and report are version-controlled as code.
 
 ## Project Result
 
@@ -147,7 +151,7 @@ The final project delivers:
 - Calibrated 7- and 30-day CatBoost forecasts that beat both a naive and a smoothed baseline
 - A buy-now / wait deal-scoring mart built on the forecasts
 - A deployed Streamlit application with a Claude-powered SQL analyst
-- A Power BI-ready star schema and report specification
+- A six-page interactive Power BI report on a star-schema semantic model with 40+ DAX measures
 - A single-command pipeline, unit tests, and GitHub Actions CI
 
 ### Repository structure
@@ -166,7 +170,7 @@ The final project delivers:
 ├── data/raw/                   Source dataset
 ├── data/marts/                 Mart exports read by the app
 ├── reports/figures/            Figures used in this README
-├── powerbi/                    Power BI model and report specification
+├── powerbi/                    Power BI project (semantic model + report) and its generator
 └── tests/                      Unit tests
 ```
 

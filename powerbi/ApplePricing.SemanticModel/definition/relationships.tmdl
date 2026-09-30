@@ -1,0 +1,43 @@
+relationship eacda48c-386b-5a62-9c4a-3c222bb606fd
+	fromColumn: dim_product.product_category
+	toColumn: dim_category.product_category
+
+relationship 0ce89632-199c-5e90-8c22-817d4586561f
+	fromColumn: fct_daily_market_prices.model_name
+	toColumn: dim_product.model_name
+
+relationship 0476aeb7-9f13-5f2c-8516-2d84ad80cf55
+	fromColumn: fct_daily_market_prices.price_date
+	toColumn: dim_date.date_day
+
+relationship 9c9c9497-5e65-54a4-b27a-2ee2df386c0c
+	fromColumn: mart_platform_price_gap.model_name
+	toColumn: dim_product.model_name
+
+relationship 26df9eea-0b36-5a98-b202-bcd94f893b91
+	fromColumn: mart_platform_price_gap.price_date
+	toColumn: dim_date.date_day
+
+relationship 416b7ddd-0182-5458-aa0f-7d30165b88e8
+	fromColumn: mart_successor_launch_impact.model_name
+	toColumn: dim_product.model_name
+
+relationship cd1f54af-d973-5a7b-9068-37d8ee7d9b87
+	fromColumn: mart_model_scorecard.model_name
+	toColumn: dim_product.model_name
+
+relationship 5023e4e5-2f03-525b-9b0e-0decde14a168
+	fromColumn: mart_deal_scores.model_name
+	toColumn: dim_product.model_name
+
+relationship 2a234021-32a5-51a1-b1cf-e5e3d187c076
+	fromColumn: mart_forecast_backtest.model_name
+	toColumn: dim_product.model_name
+
+relationship 52c8e4cd-0c94-5de2-b228-301c55f9f6c1
+	fromColumn: mart_sale_event_impact.product_category
+	toColumn: dim_category.product_category
+
+relationship 67fce2ff-51b7-598c-85d8-05ab2f18eecd
+	fromColumn: mart_depreciation_curve.product_category
+	toColumn: dim_category.product_category

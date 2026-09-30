@@ -1,0 +1,234 @@
+table fct_daily_market_prices
+	lineageTag: d1a9b7ee-c964-5706-90cf-f8a14a156ad3
+
+	measure 'Series-Days' = COUNTROWS ( fct_daily_market_prices )
+		formatString: #,0
+		displayFolder: Market
+		lineageTag: 0f419ebb-c762-5dd6-a3e6-e4d10c729517
+
+	measure Listings = SUM ( fct_daily_market_prices[listing_count] )
+		formatString: #,0
+		displayFolder: Market
+		lineageTag: 8cf8af0e-afc8-5451-810a-9000dea45359
+
+	measure 'Models Tracked' = DISTINCTCOUNT ( fct_daily_market_prices[model_name] )
+		formatString: 0
+		displayFolder: Market
+		lineageTag: 8a8a1b3e-5e7b-5c9c-b1c0-ecf2eddbefab
+
+	measure 'Avg Price' = AVERAGE ( fct_daily_market_prices[median_price_usd] )
+		formatString: \$#,0
+		displayFolder: Price
+		lineageTag: c4f88277-7f40-56d4-8234-6f8c775b63fa
+
+	measure 'Price Index' = DIVIDE ( SUM ( fct_daily_market_prices[median_price_usd] ), SUM ( fct_daily_market_prices[launch_price_usd] ) ) * 100
+		formatString: 0.0
+		displayFolder: Price
+		lineageTag: 60a3cf72-5990-504c-ab14-3c030515df76
+
+	measure 'Discount vs Launch %' = DIVIDE ( 100 - [Price Index], 100 )
+		formatString: 0.0%
+		displayFolder: Price
+		lineageTag: ba52ca41-e56d-592e-8d58-e413f97afc10
+
+	measure 'Savings vs Normal %' = AVERAGEX ( FILTER ( fct_daily_market_prices, NOT ISBLANK ( fct_daily_market_prices[baseline_price_30obs_usd] ) ), fct_daily_market_prices[savings_vs_baseline_pct] ) / 100
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 58ad2fee-fdb0-5043-a201-91e9d9d0ddd8
+
+	measure 'Event Savings vs Normal %' = CALCULATE ( [Savings vs Normal %], fct_daily_market_prices[is_sale_event] = 1 )
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 714b7e82-557f-53a3-9ab1-d63e7f96f2f2
+
+	measure 'In-Stock Share' = AVERAGE ( fct_daily_market_prices[in_stock_share] )
+		formatString: 0.0%
+		displayFolder: Market
+		lineageTag: 493eb515-91a9-565f-b9ad-fa1e5f8dfd60
+
+	column price_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: f5731bbb-11f3-5265-8d0a-3eb86587bdc5
+		summarizeBy: none
+		sourceColumn: price_date
+
+		annotation SummarizationSetBy = User
+
+	column series_id
+		dataType: string
+		lineageTag: db474a8f-6299-5fc5-a89a-39515025ae92
+		summarizeBy: none
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = User
+
+	column platform
+		dataType: string
+		lineageTag: ae321218-1eed-5349-985a-2a28c28ab65c
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: 54ba2a59-a28a-586c-a87a-fb1392d79877
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: 1c77474b-8471-595e-94fc-02d4979500a8
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column condition
+		dataType: string
+		lineageTag: fbf89466-2437-5e5c-9196-ac4525747896
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = User
+
+	column launch_price_usd
+		dataType: double
+		lineageTag: 01c4a5b4-8736-57c2-825f-49954126e775
+		summarizeBy: none
+		sourceColumn: launch_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column min_price_usd
+		dataType: double
+		lineageTag: 3c52996e-2fe8-565a-a515-6dce9c3dc59a
+		summarizeBy: none
+		sourceColumn: min_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column median_price_usd
+		dataType: double
+		lineageTag: 6ffedfbe-502f-56bf-9aaa-795e6bbc6494
+		summarizeBy: none
+		sourceColumn: median_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column max_price_usd
+		dataType: double
+		lineageTag: ac9764be-52a2-5921-9f2a-b4096f6fdb96
+		summarizeBy: none
+		sourceColumn: max_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column listing_count
+		dataType: int64
+		lineageTag: b898f15a-5843-545e-a0c3-b55353aa5003
+		summarizeBy: none
+		sourceColumn: listing_count
+
+		annotation SummarizationSetBy = User
+
+	column avg_rating
+		dataType: double
+		lineageTag: 91552929-f81f-5418-98ce-c9824065609f
+		summarizeBy: none
+		sourceColumn: avg_rating
+
+		annotation SummarizationSetBy = User
+
+	column in_stock_share
+		dataType: double
+		lineageTag: 8d9af19f-0449-549c-826c-4f259305b1ae
+		summarizeBy: none
+		sourceColumn: in_stock_share
+
+		annotation SummarizationSetBy = User
+
+	column is_sale_event
+		dataType: int64
+		lineageTag: e7ac71c7-0322-5744-8867-f51692d96bb3
+		summarizeBy: none
+		sourceColumn: is_sale_event
+
+		annotation SummarizationSetBy = User
+
+	column sale_event
+		dataType: string
+		lineageTag: b8f58f6a-6893-5674-9698-3936a8f256a2
+		summarizeBy: none
+		sourceColumn: sale_event
+
+		annotation SummarizationSetBy = User
+
+	column price_index
+		dataType: double
+		lineageTag: 40641e2b-54f2-5b9a-8267-a74e26ea9748
+		summarizeBy: none
+		sourceColumn: price_index
+
+		annotation SummarizationSetBy = User
+
+	column discount_pct
+		dataType: double
+		lineageTag: ea65fadc-d514-57d1-b71f-133208269d79
+		summarizeBy: none
+		sourceColumn: discount_pct
+
+		annotation SummarizationSetBy = User
+
+	column days_since_release
+		dataType: int64
+		lineageTag: 3ede324b-255f-5805-b6c0-fd2282a5944d
+		summarizeBy: none
+		sourceColumn: days_since_release
+
+		annotation SummarizationSetBy = User
+
+	column months_since_release
+		dataType: double
+		lineageTag: 0ce52cc8-2782-57b6-bece-2cca4332a3bb
+		summarizeBy: none
+		sourceColumn: months_since_release
+
+		annotation SummarizationSetBy = User
+
+	column is_successor_released
+		dataType: int64
+		lineageTag: f3095dad-f2b6-521f-b79d-62c8e660db88
+		summarizeBy: none
+		sourceColumn: is_successor_released
+
+		annotation SummarizationSetBy = User
+
+	column baseline_price_30obs_usd
+		dataType: double
+		lineageTag: 64a8ec96-5bfc-58f1-aceb-e75ee17d6bb7
+		summarizeBy: none
+		sourceColumn: baseline_price_30obs_usd
+
+		annotation SummarizationSetBy = User
+
+	column savings_vs_baseline_pct
+		dataType: double
+		lineageTag: 26f078d0-0efa-5465-816e-4c816c812d62
+		summarizeBy: none
+		sourceColumn: savings_vs_baseline_pct
+
+		annotation SummarizationSetBy = User
+
+	partition fct_daily_market_prices = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "fct_daily_market_prices.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

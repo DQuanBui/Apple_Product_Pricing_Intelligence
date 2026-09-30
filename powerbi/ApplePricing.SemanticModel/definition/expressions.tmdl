@@ -1,0 +1,4 @@
+expression DataFolder = "C:\Users\ASUS\Downloads\Apple_Product_Pricing_Intelligence\data\marts\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 91c811ef-65d5-59b5-8f09-629715bebb7c
+
+	annotation PBI_ResultType = Text

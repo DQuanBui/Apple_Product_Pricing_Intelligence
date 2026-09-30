@@ -1,0 +1,211 @@
+table mart_forecast_backtest
+	lineageTag: 6c306492-4cf6-506a-bb5c-13c05fdc439c
+
+	measure 'Forecast MAE' = AVERAGE ( mart_forecast_backtest[model_abs_error_usd] )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: bc3a60d9-46c9-5dda-b51c-fa3651f5af1e
+
+	measure 'Naive MAE' = AVERAGE ( mart_forecast_backtest[naive_abs_error_usd] )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: 5b8a3690-2da6-5646-8322-8d0adb270b0b
+
+	measure '30-Day Avg MAE' = AVERAGE ( mart_forecast_backtest[trailing_abs_error_usd] )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: fe8e88e1-9bce-546b-93bd-b3d596d7527c
+
+	measure 'Improvement vs Naive %' = DIVIDE ( [Naive MAE] - [Forecast MAE], [Naive MAE] )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: 48803e4a-edaf-5516-9dfc-fcfc7ade8fb4
+
+	measure 'Improvement vs 30-Day Avg %' = DIVIDE ( [30-Day Avg MAE] - [Forecast MAE], [30-Day Avg MAE] )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: f106211f-09d2-57c6-9e99-f3b53df33324
+
+	measure 'Interval Coverage %' = AVERAGE ( mart_forecast_backtest[is_within_interval] )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: 2a3523d1-c5ee-568c-9bf7-1e32bfe70d72
+
+	measure 'Forecast MAE 7d' = CALCULATE ( [Forecast MAE], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: 7d43be15-245b-59c1-b85e-3974edc66eb9
+
+	measure 'Forecast MAE 30d' = CALCULATE ( [Forecast MAE], mart_forecast_backtest[horizon_days] = 30 )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: 352665a0-bbb5-5e89-95b8-fd38a19ff1c5
+
+	measure 'Naive MAE 7d' = CALCULATE ( [Naive MAE], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: b1d14388-923c-5340-9935-a01fe20f2da2
+
+	measure '30-Day Avg MAE 7d' = CALCULATE ( [30-Day Avg MAE], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: \$#,0.00
+		displayFolder: Forecast
+		lineageTag: 9442665f-2d3b-54af-ba8e-30b175a54860
+
+	measure 'Improvement vs Naive 7d %' = CALCULATE ( [Improvement vs Naive %], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: 663b8926-6bc7-5d19-858b-8d19be23bc65
+
+	measure 'Improvement vs 30-Day Avg 7d %' = CALCULATE ( [Improvement vs 30-Day Avg %], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: 913c546b-6db8-5a7e-8925-b67f6ca1d392
+
+	measure 'Improvement vs 30-Day Avg 30d %' = CALCULATE ( [Improvement vs 30-Day Avg %], mart_forecast_backtest[horizon_days] = 30 )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: ad5c78c3-0e9c-5892-b359-e19035072632
+
+	measure 'Interval Coverage 7d %' = CALCULATE ( [Interval Coverage %], mart_forecast_backtest[horizon_days] = 7 )
+		formatString: 0.0%
+		displayFolder: Forecast
+		lineageTag: 4ebee77f-3255-557a-8a5b-ed77c3a37220
+
+	column horizon_days
+		dataType: int64
+		lineageTag: fde00c19-29f4-5d64-bdb4-1b89a36e3b71
+		summarizeBy: none
+		sourceColumn: horizon_days
+
+		annotation SummarizationSetBy = User
+
+	column price_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 7989c6da-116e-56a9-880c-fca43de4c8c2
+		summarizeBy: none
+		sourceColumn: price_date
+
+		annotation SummarizationSetBy = User
+
+	column platform
+		dataType: string
+		lineageTag: 9389d59f-5338-53d3-b0ca-b7d015f9ad7e
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: 2b25dce9-6543-578f-9aaf-9c1199d2ab42
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: 5f097d42-e68f-552d-8636-22c45d84056c
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column condition
+		dataType: string
+		lineageTag: 3a381276-ee38-52c9-bfcf-69207d4107b2
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = User
+
+	column current_price_usd
+		dataType: double
+		lineageTag: f554f455-abdb-56f0-9aa9-4da8e1053c1b
+		summarizeBy: none
+		sourceColumn: current_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column actual_price_usd
+		dataType: double
+		lineageTag: ba96e1b7-2328-5338-a009-9c977f6885cf
+		summarizeBy: none
+		sourceColumn: actual_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column pred_p10_usd
+		dataType: double
+		lineageTag: 3e1a859e-e2e4-5200-8694-4bc7c282d63a
+		summarizeBy: none
+		sourceColumn: pred_p10_usd
+
+		annotation SummarizationSetBy = User
+
+	column pred_p50_usd
+		dataType: double
+		lineageTag: bb7981ed-ea3f-543f-b7f4-168e19354894
+		summarizeBy: none
+		sourceColumn: pred_p50_usd
+
+		annotation SummarizationSetBy = User
+
+	column pred_p90_usd
+		dataType: double
+		lineageTag: b0a8c7b2-4712-5333-9870-9484a6312ada
+		summarizeBy: none
+		sourceColumn: pred_p90_usd
+
+		annotation SummarizationSetBy = User
+
+	column baseline_trailing_30d_usd
+		dataType: double
+		lineageTag: f6cfc50b-39d1-5d2c-b27d-7d4b044d343a
+		summarizeBy: none
+		sourceColumn: baseline_trailing_30d_usd
+
+		annotation SummarizationSetBy = User
+
+	column model_abs_error_usd
+		dataType: double
+		lineageTag: caf8050e-fb8d-5dac-86c2-797d2509e3e0
+		summarizeBy: none
+		sourceColumn: model_abs_error_usd
+
+		annotation SummarizationSetBy = User
+
+	column naive_abs_error_usd
+		dataType: double
+		lineageTag: d3ca3144-be79-5433-96cb-3931ab97d5b9
+		summarizeBy: none
+		sourceColumn: naive_abs_error_usd
+
+		annotation SummarizationSetBy = User
+
+	column trailing_abs_error_usd
+		dataType: double
+		lineageTag: c0dd9859-6386-537d-83ca-0e6818e158fa
+		summarizeBy: none
+		sourceColumn: trailing_abs_error_usd
+
+		annotation SummarizationSetBy = User
+
+	column is_within_interval
+		dataType: int64
+		lineageTag: a7e01ab8-1e0f-5357-8d4f-b6ba013c120f
+		summarizeBy: none
+		sourceColumn: is_within_interval
+
+		annotation SummarizationSetBy = User
+
+	partition mart_forecast_backtest = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_forecast_backtest.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,233 @@
+table mart_deal_scores
+	lineageTag: 2f3b2a9e-da1a-5349-99b1-8a586187c5fb
+
+	measure 'Series Scored' = COUNTROWS ( mart_deal_scores )
+		formatString: 0
+		displayFolder: Deals
+		lineageTag: cce2d755-cdce-5d20-b40a-b371e8e70c12
+
+	measure 'Buy Now Series' = CALCULATE ( COUNTROWS ( mart_deal_scores ), mart_deal_scores[recommendation] = "Buy now" )
+		formatString: 0
+		displayFolder: Deals
+		lineageTag: a6d94bc1-1be1-5273-bfd6-e2e1a6fa3f1f
+
+	measure 'Wait Series' = CALCULATE ( COUNTROWS ( mart_deal_scores ), mart_deal_scores[recommendation] = "Wait" )
+		formatString: 0
+		displayFolder: Deals
+		lineageTag: 4494d699-73b7-5917-a66b-1c5e748110e8
+
+	measure 'Avg Deal Score' = AVERAGE ( mart_deal_scores[deal_score] )
+		formatString: 0.0
+		displayFolder: Deals
+		lineageTag: 8ca740af-8a2e-55a6-bd5c-c31767546c6a
+
+	column series_id
+		dataType: string
+		lineageTag: 5e8b7875-ca60-56f0-8b2b-9a32e677b270
+		summarizeBy: none
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = User
+
+	column platform
+		dataType: string
+		lineageTag: 67ed494f-df59-5a86-a458-374c2a2be059
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: 38507326-1017-53a8-8b72-96c1629516db
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: 53237c64-dcd3-5d1e-bde4-07010458d334
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column condition
+		dataType: string
+		lineageTag: 4c1be651-8122-5584-9a9a-ce640e023aee
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = User
+
+	column as_of_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: aee63b2a-d335-57d2-99e4-a151b6b4f7c2
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = User
+
+	column launch_price_usd
+		dataType: double
+		lineageTag: 9ac6cc44-f69e-5c86-8e0d-7021ce4b697b
+		summarizeBy: none
+		sourceColumn: launch_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column current_price_usd
+		dataType: double
+		lineageTag: f477c9d1-7dff-5317-bb8e-9e5de28a2c58
+		summarizeBy: none
+		sourceColumn: current_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column price_index
+		dataType: double
+		lineageTag: a630ceac-c6b4-58fc-a35e-3af239571df9
+		summarizeBy: none
+		sourceColumn: price_index
+
+		annotation SummarizationSetBy = User
+
+	column baseline_price_30obs_usd
+		dataType: double
+		lineageTag: 7a65bb60-14c4-5109-aaeb-0c147cf3535a
+		summarizeBy: none
+		sourceColumn: baseline_price_30obs_usd
+
+		annotation SummarizationSetBy = User
+
+	column discount_vs_normal_pct
+		dataType: double
+		lineageTag: 79da0a36-f4ac-5f68-8a46-7ae1568f6060
+		summarizeBy: none
+		sourceColumn: discount_vs_normal_pct
+
+		annotation SummarizationSetBy = User
+
+	column forecast_7d_usd
+		dataType: double
+		lineageTag: 9df423ff-66c6-5b77-843d-ef4cb63fdd47
+		summarizeBy: none
+		sourceColumn: forecast_7d_usd
+
+		annotation SummarizationSetBy = User
+
+	column forecast_30d_usd
+		dataType: double
+		lineageTag: cfe0d807-09b9-5039-9c41-456762a4a679
+		summarizeBy: none
+		sourceColumn: forecast_30d_usd
+
+		annotation SummarizationSetBy = User
+
+	column forecast_30d_p10_usd
+		dataType: double
+		lineageTag: 00b18b56-db83-50e2-9b5c-89230ee2d48b
+		summarizeBy: none
+		sourceColumn: forecast_30d_p10_usd
+
+		annotation SummarizationSetBy = User
+
+	column forecast_30d_p90_usd
+		dataType: double
+		lineageTag: 4bcbc951-8971-52bc-80e3-6a9f10e74750
+		summarizeBy: none
+		sourceColumn: forecast_30d_p90_usd
+
+		annotation SummarizationSetBy = User
+
+	column expected_change_7d_pct
+		dataType: double
+		lineageTag: 8737dc07-efaf-595e-8f7b-b7f16fcc89a1
+		summarizeBy: none
+		sourceColumn: expected_change_7d_pct
+
+		annotation SummarizationSetBy = User
+
+	column expected_change_30d_pct
+		dataType: double
+		lineageTag: 2323303d-a2a9-520c-83e4-ecc3230a4d83
+		summarizeBy: none
+		sourceColumn: expected_change_30d_pct
+
+		annotation SummarizationSetBy = User
+
+	column expected_saving_if_wait_30d_usd
+		dataType: double
+		lineageTag: 6695056e-9d7f-50df-b69b-20ff3d96601b
+		summarizeBy: none
+		sourceColumn: expected_saving_if_wait_30d_usd
+
+		annotation SummarizationSetBy = User
+
+	column avg_rating
+		dataType: double
+		lineageTag: 07d2a7bb-e816-5b0c-8e71-b09b1a86b5e8
+		summarizeBy: none
+		sourceColumn: avg_rating
+
+		annotation SummarizationSetBy = User
+
+	column in_stock_share
+		dataType: double
+		lineageTag: e47c0439-a175-59d8-8cbf-3218b4f4c002
+		summarizeBy: none
+		sourceColumn: in_stock_share
+
+		annotation SummarizationSetBy = User
+
+	column days_since_release
+		dataType: int64
+		lineageTag: 598bb6aa-07b9-58ae-bfbe-faf60f9b0970
+		summarizeBy: none
+		sourceColumn: days_since_release
+
+		annotation SummarizationSetBy = User
+
+	column is_stale
+		dataType: int64
+		lineageTag: c27f10be-9017-566d-b299-1575f92a06db
+		summarizeBy: none
+		sourceColumn: is_stale
+
+		annotation SummarizationSetBy = User
+
+	column recommendation
+		dataType: string
+		lineageTag: ea20a7de-1578-5fea-ae80-0a1908d17417
+		summarizeBy: none
+		sourceColumn: recommendation
+
+		annotation SummarizationSetBy = User
+
+	column recommendation_reason
+		dataType: string
+		lineageTag: 30bffed8-a96b-5c07-b902-a31a0fa5d459
+		summarizeBy: none
+		sourceColumn: recommendation_reason
+
+		annotation SummarizationSetBy = User
+
+	column deal_score
+		dataType: double
+		lineageTag: 0adc15f3-392e-5a38-9036-cb91a082d741
+		summarizeBy: none
+		sourceColumn: deal_score
+
+		annotation SummarizationSetBy = User
+
+	partition mart_deal_scores = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_deal_scores.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

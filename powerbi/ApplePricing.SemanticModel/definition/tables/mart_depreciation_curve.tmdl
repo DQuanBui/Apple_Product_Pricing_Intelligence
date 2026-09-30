@@ -1,0 +1,78 @@
+table mart_depreciation_curve
+	lineageTag: c165e7e9-bb9c-5b97-b0f3-4ba55c5f1f06
+
+	measure 'Price Index New' = CALCULATE ( AVERAGE ( mart_depreciation_curve[median_price_index] ), mart_depreciation_curve[condition] = "New", mart_depreciation_curve[models] >= 2, mart_depreciation_curve[series_days] >= 60 )
+		formatString: 0.0
+		displayFolder: Life cycle
+		lineageTag: cdfae2cf-1975-5f18-b941-9a4a4ac41d5e
+
+	measure 'Price Index Refurbished' = CALCULATE ( AVERAGE ( mart_depreciation_curve[median_price_index] ), mart_depreciation_curve[condition] = "Refurbished", mart_depreciation_curve[models] >= 2, mart_depreciation_curve[series_days] >= 60 )
+		formatString: 0.0
+		displayFolder: Life cycle
+		lineageTag: 126a7038-cd84-527f-95e3-c60b88005321
+
+	column product_category
+		dataType: string
+		lineageTag: fa39130a-4247-532d-95c0-3172d9823a4c
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column condition
+		dataType: string
+		lineageTag: 6117c883-c2ad-5683-92b8-8321dc288a79
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = User
+
+	column months_since_release
+		dataType: double
+		lineageTag: 0359c56f-1996-5553-8bc7-c4ea03503e02
+		summarizeBy: none
+		sourceColumn: months_since_release
+
+		annotation SummarizationSetBy = User
+
+	column median_price_index
+		dataType: double
+		lineageTag: d2a1272e-5e66-5264-b127-a625d12ed5dc
+		summarizeBy: none
+		sourceColumn: median_price_index
+
+		annotation SummarizationSetBy = User
+
+	column avg_price_index
+		dataType: double
+		lineageTag: 29d13b5e-6bf6-5b3e-8240-d523c5275b5d
+		summarizeBy: none
+		sourceColumn: avg_price_index
+
+		annotation SummarizationSetBy = User
+
+	column series_days
+		dataType: int64
+		lineageTag: 3e11e1af-eecf-590a-8efa-71d6fcc20e28
+		summarizeBy: none
+		sourceColumn: series_days
+
+		annotation SummarizationSetBy = User
+
+	column models
+		dataType: int64
+		lineageTag: e7e6528a-2aeb-5e4b-b514-ca1b6db81ba9
+		summarizeBy: none
+		sourceColumn: models
+
+		annotation SummarizationSetBy = User
+
+	partition mart_depreciation_curve = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_depreciation_curve.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

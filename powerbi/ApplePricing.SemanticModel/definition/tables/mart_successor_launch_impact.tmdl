@@ -1,0 +1,111 @@
+table mart_successor_launch_impact
+	lineageTag: cf06d134-f24d-5ab6-8393-4a5ba2d63cab
+
+	measure 'Successor Price Change %' = AVERAGE ( mart_successor_launch_impact[price_change_pct] ) / 100
+		formatString: 0.0%
+		displayFolder: Life cycle
+		lineageTag: 1c992c6d-8758-59f4-acbc-7f02f040b327
+
+	measure 'Models with Successor' = COUNTROWS ( mart_successor_launch_impact )
+		formatString: 0
+		displayFolder: Life cycle
+		lineageTag: 5a76bbed-e9c9-58e9-84bb-e847c5ebd412
+
+	column model_name
+		dataType: string
+		lineageTag: a464ec2d-1773-55cc-b6e6-46fc564590cf
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: 85f7acf8-cad9-58eb-a982-fc1767b5867a
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column successor_model_name
+		dataType: string
+		lineageTag: e027907f-3b97-5bd9-919f-67518cbac430
+		summarizeBy: none
+		sourceColumn: successor_model_name
+
+		annotation SummarizationSetBy = User
+
+	column successor_release_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: ab9a7b1e-813e-5eef-9e8e-261edfe945f3
+		summarizeBy: none
+		sourceColumn: successor_release_date
+
+		annotation SummarizationSetBy = User
+
+	column index_60d_before
+		dataType: double
+		lineageTag: 4f675f49-34e4-5181-8156-539165a23796
+		summarizeBy: none
+		sourceColumn: index_60d_before
+
+		annotation SummarizationSetBy = User
+
+	column index_0_59d_after
+		dataType: double
+		lineageTag: 79965ed3-3026-525f-acf1-94e174100e9d
+		summarizeBy: none
+		sourceColumn: index_0_59d_after
+
+		annotation SummarizationSetBy = User
+
+	column index_60_119d_after
+		dataType: double
+		lineageTag: 35bc19fe-c28f-577f-915a-43f9256caa6c
+		summarizeBy: none
+		sourceColumn: index_60_119d_after
+
+		annotation SummarizationSetBy = User
+
+	column index_change_pts
+		dataType: double
+		lineageTag: 20f633c0-1343-5b7b-a13c-d19a2a3f696f
+		summarizeBy: none
+		sourceColumn: index_change_pts
+
+		annotation SummarizationSetBy = User
+
+	column price_change_pct
+		dataType: double
+		lineageTag: ef81cc47-643c-5e8c-918b-77adea27da40
+		summarizeBy: none
+		sourceColumn: price_change_pct
+
+		annotation SummarizationSetBy = User
+
+	column obs_before
+		dataType: double
+		lineageTag: b983cd0e-8122-571d-8e7b-50f5ef5de441
+		summarizeBy: none
+		sourceColumn: obs_before
+
+		annotation SummarizationSetBy = User
+
+	column obs_after
+		dataType: double
+		lineageTag: 9779caac-17c9-56ad-bc86-7e72efc7442f
+		summarizeBy: none
+		sourceColumn: obs_after
+
+		annotation SummarizationSetBy = User
+
+	partition mart_successor_launch_impact = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_successor_launch_impact.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

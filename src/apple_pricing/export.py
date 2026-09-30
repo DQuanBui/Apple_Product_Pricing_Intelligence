@@ -10,6 +10,7 @@ from apple_pricing.config import MARTS_EXPORT_DIR
 
 EXPORTS = {
     "dim_product": "select * from marts.dim_product",
+    "dim_date": "select * from marts.dim_date",
     "fct_daily_market_prices": """
         select
             price_date, series_id, platform, product_category, model_name, condition,

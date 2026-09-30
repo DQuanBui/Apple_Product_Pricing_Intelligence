@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "p1_overview",
+    "p2_price_explorer",
+    "p3_life_cycle",
+    "p4_sale_events",
+    "p5_marketplaces",
+    "p6_forecasts_deals"
+  ],
+  "activePageName": "p1_overview"
+}

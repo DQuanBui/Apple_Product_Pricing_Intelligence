@@ -1,0 +1,129 @@
+table mart_platform_price_gap
+	lineageTag: a78a9a87-097a-59b5-9926-3e0d4b9e769a
+
+	measure 'Matched Days' = COUNTROWS ( mart_platform_price_gap )
+		formatString: #,0
+		displayFolder: Marketplaces
+		lineageTag: 763bb342-c084-5aad-ad7a-41ee2786097c
+
+	measure 'Amazon Cheaper %' = DIVIDE ( CALCULATE ( COUNTROWS ( mart_platform_price_gap ), mart_platform_price_gap[cheaper_platform] = "Amazon" ), COUNTROWS ( mart_platform_price_gap ) )
+		formatString: 0.0%
+		displayFolder: Marketplaces
+		lineageTag: 2e90a8b2-2d41-5dc4-a605-4ec2424bbae6
+
+	measure 'Median Gap %' = MEDIAN ( mart_platform_price_gap[gap_pct] ) / 100
+		formatString: 0.00%
+		displayFolder: Marketplaces
+		lineageTag: 66fc44fa-1f17-5341-82ac-b7742816b056
+
+	measure 'Avg Absolute Gap %' = AVERAGEX ( mart_platform_price_gap, ABS ( mart_platform_price_gap[gap_pct] ) ) / 100
+		formatString: 0.0%
+		displayFolder: Marketplaces
+		lineageTag: dd168ec2-f5b2-5b20-8096-4da5355098fb
+
+	column price_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8c599389-d9db-564f-ad0a-4cc1be2f70f4
+		summarizeBy: none
+		sourceColumn: price_date
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: bdd8ed96-3f73-5634-a0d9-6f869b4c9782
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: f05dddc3-7dcc-5da2-a849-171b4226e6db
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column condition
+		dataType: string
+		lineageTag: a7328b07-bfad-5e9a-8019-4e9910d201df
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = User
+
+	column launch_price_usd
+		dataType: double
+		lineageTag: aab5759a-15c8-5ba9-8998-4ea07927650b
+		summarizeBy: none
+		sourceColumn: launch_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column amazon_price_usd
+		dataType: double
+		lineageTag: 5c444073-cacb-50e0-ba34-ebf100875d8d
+		summarizeBy: none
+		sourceColumn: amazon_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column flipkart_price_usd
+		dataType: double
+		lineageTag: 1bb211e2-bc45-5749-87aa-606fa1c97ff5
+		summarizeBy: none
+		sourceColumn: flipkart_price_usd
+
+		annotation SummarizationSetBy = User
+
+	column any_sale_event
+		dataType: int64
+		lineageTag: b6dc6974-993e-5a4b-9092-5711cccb8985
+		summarizeBy: none
+		sourceColumn: any_sale_event
+
+		annotation SummarizationSetBy = User
+
+	column gap_usd
+		dataType: double
+		lineageTag: 33b1581a-b99f-57d5-8c45-ba72acdcc004
+		summarizeBy: none
+		sourceColumn: gap_usd
+
+		annotation SummarizationSetBy = User
+
+	column gap_pct
+		dataType: double
+		lineageTag: c075c2c2-8c90-50c6-bafa-0f55135ab00e
+		summarizeBy: none
+		sourceColumn: gap_pct
+
+		annotation SummarizationSetBy = User
+
+	column cheaper_platform
+		dataType: string
+		lineageTag: 006982e6-c3a4-5caa-9642-0559663191a2
+		summarizeBy: none
+		sourceColumn: cheaper_platform
+
+		annotation SummarizationSetBy = User
+
+	column 'Gap Bucket %' = MAX ( -10, MIN ( 10, ROUND ( mart_platform_price_gap[gap_pct], 0 ) ) )
+		dataType: double
+		formatString: 0
+		lineageTag: a3f45efa-b12e-5ddc-91ab-6de9a2b3eb74
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition mart_platform_price_gap = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_platform_price_gap.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

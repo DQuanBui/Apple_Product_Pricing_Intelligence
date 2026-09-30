@@ -1,0 +1,228 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "scorecard",
+  "position": {
+    "x": 20,
+    "y": 486,
+    "z": 10000,
+    "width": 1240,
+    "height": 214,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "model_name"
+                }
+              },
+              "queryRef": "mart_model_scorecard.model_name",
+              "nativeQueryRef": "model_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "product_category"
+                }
+              },
+              "queryRef": "mart_model_scorecard.product_category",
+              "nativeQueryRef": "product_category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "release_date"
+                }
+              },
+              "queryRef": "mart_model_scorecard.release_date",
+              "nativeQueryRef": "release_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "msrp_usd"
+                }
+              },
+              "queryRef": "mart_model_scorecard.msrp_usd",
+              "nativeQueryRef": "msrp_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "current_price_usd"
+                }
+              },
+              "queryRef": "mart_model_scorecard.current_price_usd",
+              "nativeQueryRef": "current_price_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "current_price_index"
+                }
+              },
+              "queryRef": "mart_model_scorecard.current_price_index",
+              "nativeQueryRef": "current_price_index"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "avg_monthly_depreciation_pts"
+                }
+              },
+              "queryRef": "mart_model_scorecard.avg_monthly_depreciation_pts",
+              "nativeQueryRef": "avg_monthly_depreciation_pts"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "pct_days_above_msrp"
+                }
+              },
+              "queryRef": "mart_model_scorecard.pct_days_above_msrp",
+              "nativeQueryRef": "pct_days_above_msrp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "avg_event_savings_pct"
+                }
+              },
+              "queryRef": "mart_model_scorecard.avg_event_savings_pct",
+              "nativeQueryRef": "avg_event_savings_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_model_scorecard"
+                    }
+                  },
+                  "Property": "refurbished_discount_pct"
+                }
+              },
+              "queryRef": "mart_model_scorecard.refurbished_discount_pct",
+              "nativeQueryRef": "refurbished_discount_pct"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "mart_model_scorecard"
+                  }
+                },
+                "Property": "release_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model scorecard'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B0B0B'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

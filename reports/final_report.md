@@ -284,7 +284,11 @@ The dashboard reads small exports of the dbt marts, so the public app needs no d
 
 **AI Analyst.** Users ask questions in plain English, such as *"Which sale event saves the most on Macs?"* **Claude** writes SQL against the marts and runs it in a locked-down in-memory database. Only a single read-only SELECT is allowed, file access is disabled, and results are capped at 200 rows. Claude then answers with the numbers it found and shows every query it ran, so each answer can be checked.
 
-**Power BI.** The marts form a star schema: `dim_product` and `dim_date` linked to the price facts. That structure is ready for Power BI's Snowflake connector with the read-only `REPORTER` role. The DAX measures and page designs are documented in the repository.
+**Power BI.** A six-page interactive report (`powerbi/ApplePricing.pbip`) sits on a star-schema semantic model. `dim_product`, `dim_date`, and a category dimension filter every fact and mart, and more than 40 DAX measures cover prices, events, marketplaces, forecasts, and deals.
+
+The six pages are Executive Overview, Price Explorer, Life Cycle & Launches, Sale Events, Marketplaces & Condition, and Forecasts & Buy or Wait. Every page has a category slicer, and all visuals cross-filter.
+
+The model imports the mart exports today. The same model can point at Snowflake through the read-only `REPORTER` role. The report is stored as a Power BI Project (TMDL and PBIR), so it is version-controlled alongside the code.
 
 ## 11. Recommendations
 

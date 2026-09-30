@@ -1,0 +1,152 @@
+table dim_product
+	lineageTag: 59401485-fca0-554e-a8c0-387460fcae3d
+
+	column product_key
+		dataType: int64
+		lineageTag: a8d5f0bf-f0c5-572a-bcf8-94fc5d24f531
+		summarizeBy: none
+		sourceColumn: product_key
+
+		annotation SummarizationSetBy = User
+
+	column model_name
+		dataType: string
+		lineageTag: ffffc203-c92a-5949-b4e0-65286ac872ab
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: ede40785-2491-5827-a0d9-9acd5a0e4990
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column product_line
+		dataType: string
+		lineageTag: db70f756-0369-530a-aa50-d62d3ecfb674
+		summarizeBy: none
+		sourceColumn: product_line
+
+		annotation SummarizationSetBy = User
+
+	column tier
+		dataType: string
+		lineageTag: b43d34a5-007c-58db-847b-36f23b0cd7aa
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = User
+
+	column generation
+		dataType: int64
+		lineageTag: 259f91c8-079f-5b37-a19c-780a47d749d8
+		summarizeBy: none
+		sourceColumn: generation
+
+		annotation SummarizationSetBy = User
+
+	column chip
+		dataType: string
+		lineageTag: bd85e0f6-5ba9-5db6-8d0a-aa172b10c64d
+		summarizeBy: none
+		sourceColumn: chip
+
+		annotation SummarizationSetBy = User
+
+	column storage_gb
+		dataType: int64
+		lineageTag: 3e17a943-433b-5cc8-88ee-80b0add85667
+		summarizeBy: none
+		sourceColumn: storage_gb
+
+		annotation SummarizationSetBy = User
+
+	column display_size
+		dataType: string
+		lineageTag: 16ad5864-5e00-5ba2-9ea5-a1413d987c35
+		summarizeBy: none
+		sourceColumn: display_size
+
+		annotation SummarizationSetBy = User
+
+	column release_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: ad408524-0920-556a-9f93-d6b473a4db94
+		summarizeBy: none
+		sourceColumn: release_date
+
+		annotation SummarizationSetBy = User
+
+	column release_year
+		dataType: int64
+		lineageTag: 192d0e78-3376-5c51-b682-60665b9b8872
+		summarizeBy: none
+		sourceColumn: release_year
+
+		annotation SummarizationSetBy = User
+
+	column msrp_usd
+		dataType: double
+		lineageTag: 68aa55cd-54ae-5121-aa62-fd73bb385928
+		summarizeBy: none
+		sourceColumn: msrp_usd
+
+		annotation SummarizationSetBy = User
+
+	column successor_model_name
+		dataType: string
+		lineageTag: c3027e0b-d7ef-559b-97b2-3f398ff5cfa9
+		summarizeBy: none
+		sourceColumn: successor_model_name
+
+		annotation SummarizationSetBy = User
+
+	column successor_release_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: f8a01a1e-7619-5919-9c60-bed088bc151f
+		summarizeBy: none
+		sourceColumn: successor_release_date
+
+		annotation SummarizationSetBy = User
+
+	column first_observed_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 5a78eeea-3fbe-536b-b9c1-50c990831fca
+		summarizeBy: none
+		sourceColumn: first_observed_date
+
+		annotation SummarizationSetBy = User
+
+	column last_observed_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 52fb4be8-b39e-5452-990b-8f7dbc12445b
+		summarizeBy: none
+		sourceColumn: last_observed_date
+
+		annotation SummarizationSetBy = User
+
+	column listing_snapshots
+		dataType: int64
+		lineageTag: d6b87ff9-a66e-50dc-9081-97a28f8a1d78
+		summarizeBy: none
+		sourceColumn: listing_snapshots
+
+		annotation SummarizationSetBy = User
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "dim_product.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

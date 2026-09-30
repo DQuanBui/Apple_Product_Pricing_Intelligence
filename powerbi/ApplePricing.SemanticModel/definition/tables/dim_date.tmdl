@@ -1,0 +1,86 @@
+table dim_date
+	lineageTag: acfd99ef-777b-5022-88ee-9475937aae0d
+
+	column date_day
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 05c83780-4e57-5a77-b202-f90d87e4dd40
+		summarizeBy: none
+		sourceColumn: date_day
+
+		annotation SummarizationSetBy = User
+
+	column year
+		dataType: int64
+		lineageTag: 3efbf4dc-7eb1-59e8-9e8a-7ec9776cbfb2
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: int64
+		lineageTag: c97dfe53-7934-529a-9de3-2d7207283c81
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = User
+
+	column month
+		dataType: int64
+		lineageTag: 09622921-8b50-5b9b-9b58-f32009efbcce
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = User
+
+	column month_name
+		dataType: string
+		lineageTag: 39a0f8ec-3270-5cb5-9b02-e37804800328
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = User
+
+	column year_month
+		dataType: string
+		lineageTag: a4c5b2ec-6e54-51ac-b0d7-705e76acb9e6
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = User
+
+	column month_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 0f394eea-0d5f-5131-a25f-0bd99f982abe
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = User
+
+	column day_of_week
+		dataType: int64
+		lineageTag: 6811619d-fd33-5e03-b095-efa025e9e4e4
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = User
+
+	column is_weekend
+		dataType: int64
+		lineageTag: b4da8164-a398-53aa-a6f4-2f1e28deea31
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = User
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "dim_date.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

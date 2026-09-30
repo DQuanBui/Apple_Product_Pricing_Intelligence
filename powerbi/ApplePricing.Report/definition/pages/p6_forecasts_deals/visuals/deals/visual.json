@@ -1,0 +1,242 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "deals",
+  "position": {
+    "x": 20,
+    "y": 452,
+    "z": 12000,
+    "width": 1240,
+    "height": 248,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "recommendation"
+                }
+              },
+              "queryRef": "mart_deal_scores.recommendation",
+              "nativeQueryRef": "recommendation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "model_name"
+                }
+              },
+              "queryRef": "mart_deal_scores.model_name",
+              "nativeQueryRef": "model_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "platform"
+                }
+              },
+              "queryRef": "mart_deal_scores.platform",
+              "nativeQueryRef": "platform"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "condition"
+                }
+              },
+              "queryRef": "mart_deal_scores.condition",
+              "nativeQueryRef": "condition"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "current_price_usd"
+                }
+              },
+              "queryRef": "mart_deal_scores.current_price_usd",
+              "nativeQueryRef": "current_price_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "discount_vs_normal_pct"
+                }
+              },
+              "queryRef": "mart_deal_scores.discount_vs_normal_pct",
+              "nativeQueryRef": "discount_vs_normal_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "forecast_30d_usd"
+                }
+              },
+              "queryRef": "mart_deal_scores.forecast_30d_usd",
+              "nativeQueryRef": "forecast_30d_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "forecast_30d_p10_usd"
+                }
+              },
+              "queryRef": "mart_deal_scores.forecast_30d_p10_usd",
+              "nativeQueryRef": "forecast_30d_p10_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "forecast_30d_p90_usd"
+                }
+              },
+              "queryRef": "mart_deal_scores.forecast_30d_p90_usd",
+              "nativeQueryRef": "forecast_30d_p90_usd"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "deal_score"
+                }
+              },
+              "queryRef": "mart_deal_scores.deal_score",
+              "nativeQueryRef": "deal_score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_deal_scores"
+                    }
+                  },
+                  "Property": "recommendation_reason"
+                }
+              },
+              "queryRef": "mart_deal_scores.recommendation_reason",
+              "nativeQueryRef": "recommendation_reason"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "mart_deal_scores"
+                  }
+                },
+                "Property": "deal_score"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Buy now / wait by series (sorted by deal score)'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B0B0B'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

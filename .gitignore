@@ -25,6 +25,10 @@ logs/
 # Trained model binaries (large; metrics + predictions are exported to data/marts/)
 artifacts/models/
 
+# Power BI Desktop local files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
 # OS / editor
 .DS_Store
 Thumbs.db

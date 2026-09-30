@@ -1,0 +1,124 @@
+table mart_sale_event_impact
+	lineageTag: a03edd0b-d8db-5cbf-bac2-d4c34ca48619
+
+	measure 'Headline Discount %' = DIVIDE ( SUMX ( mart_sale_event_impact, mart_sale_event_impact[avg_discount_vs_msrp_pct] * mart_sale_event_impact[series_days] ), SUM ( mart_sale_event_impact[series_days] ) ) / 100
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: adb6e40f-a05f-5f1e-adcd-05f745c43370
+
+	measure 'Real Saving vs Normal %' = DIVIDE ( SUMX ( mart_sale_event_impact, mart_sale_event_impact[avg_savings_vs_baseline_pct] * mart_sale_event_impact[series_days] ), SUM ( mart_sale_event_impact[series_days] ) ) / 100
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 04d50a45-73e4-5ef2-a18a-fdea48636fcd
+
+	measure 'Event Days Saving 5%+' = DIVIDE ( SUMX ( mart_sale_event_impact, mart_sale_event_impact[pct_days_saving_5pct_plus] * mart_sale_event_impact[series_days] ), SUM ( mart_sale_event_impact[series_days] ) ) / 100
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 8b86d2e5-f143-53dc-9db6-0c7b675ffc5d
+
+	measure 'Avg Saving per Day (USD)' = DIVIDE ( SUMX ( mart_sale_event_impact, mart_sale_event_impact[avg_savings_usd] * mart_sale_event_impact[series_days] ), SUM ( mart_sale_event_impact[series_days] ) )
+		formatString: \$#,0
+		displayFolder: Sale events
+		lineageTag: f91c04c3-e097-5252-8b49-3e1d0ae4be0a
+
+	measure 'Event Headline Discount %' = CALCULATE ( [Headline Discount %], mart_sale_event_impact[sale_event] <> "No Event" )
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: f1adcd23-578f-53b8-973f-c71c9853a598
+
+	measure 'Event Real Saving %' = CALCULATE ( [Real Saving vs Normal %], mart_sale_event_impact[sale_event] <> "No Event" )
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 5e3a188e-54df-5aaf-b540-51f3d53e934a
+
+	measure 'Event Days Saving 5%+ (events)' = CALCULATE ( [Event Days Saving 5%+], mart_sale_event_impact[sale_event] <> "No Event" )
+		formatString: 0.0%
+		displayFolder: Sale events
+		lineageTag: 7bef5334-e112-5d97-91c7-6c7d68c93559
+
+	measure 'Event Series-Days' = CALCULATE ( SUM ( mart_sale_event_impact[series_days] ), mart_sale_event_impact[sale_event] <> "No Event" )
+		formatString: #,0
+		displayFolder: Sale events
+		lineageTag: 7ab0e080-61f9-5b48-b887-3234b8869d8a
+
+	column sale_event
+		dataType: string
+		lineageTag: bd39003a-eb18-58fd-8e0f-ae0b6443be7b
+		summarizeBy: none
+		sourceColumn: sale_event
+
+		annotation SummarizationSetBy = User
+
+	column product_category
+		dataType: string
+		lineageTag: 5c583616-3f63-5838-b675-06006ee47744
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = User
+
+	column series_days
+		dataType: int64
+		lineageTag: 037925ef-c34e-52e3-8620-ef1f66080842
+		summarizeBy: none
+		sourceColumn: series_days
+
+		annotation SummarizationSetBy = User
+
+	column avg_discount_vs_msrp_pct
+		dataType: double
+		lineageTag: d62f7f7f-0153-5f95-b858-854ee3ae9b57
+		summarizeBy: none
+		sourceColumn: avg_discount_vs_msrp_pct
+
+		annotation SummarizationSetBy = User
+
+	column avg_savings_vs_baseline_pct
+		dataType: double
+		lineageTag: 409daf04-efef-5bdc-bf07-8cb2c382fb7d
+		summarizeBy: none
+		sourceColumn: avg_savings_vs_baseline_pct
+
+		annotation SummarizationSetBy = User
+
+	column median_savings_vs_baseline_pct
+		dataType: double
+		lineageTag: 614febf0-6d19-56da-b36a-4f94ccbf65cf
+		summarizeBy: none
+		sourceColumn: median_savings_vs_baseline_pct
+
+		annotation SummarizationSetBy = User
+
+	column pct_days_saving_5pct_plus
+		dataType: double
+		lineageTag: 369b7a3d-3ea1-55fa-ad85-2f2b780092e3
+		summarizeBy: none
+		sourceColumn: pct_days_saving_5pct_plus
+
+		annotation SummarizationSetBy = User
+
+	column avg_in_stock_pct
+		dataType: double
+		lineageTag: 91415e11-bb70-5373-be5b-07fe178ef4fd
+		summarizeBy: none
+		sourceColumn: avg_in_stock_pct
+
+		annotation SummarizationSetBy = User
+
+	column avg_savings_usd
+		dataType: double
+		lineageTag: f1dd7977-119b-596a-bd1f-f12fad954d8e
+		summarizeBy: none
+		sourceColumn: avg_savings_usd
+
+		annotation SummarizationSetBy = User
+
+	partition mart_sale_event_impact = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document ( File.Contents ( DataFolder & "mart_sale_event_impact.parquet" ) )
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
