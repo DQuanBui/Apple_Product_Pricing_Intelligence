@@ -1,0 +1,23 @@
+# Everything needed to rebuild the warehouse, retrain the models, and run the notebook.
+-r requirements.txt
+
+# Warehouse + transformation
+dbt-core>=1.10
+dbt-duckdb>=1.9
+dbt-snowflake>=1.9        # only used with --target prod
+snowflake-connector-python[pandas]>=3.12  # only used with --target prod
+boto3>=1.35               # only used for the S3 upload
+
+# Modelling + analysis
+scikit-learn>=1.5
+catboost>=1.2
+shap>=0.46
+scipy>=1.13
+statsmodels>=0.14
+matplotlib>=3.8
+seaborn>=0.13
+
+# Notebook + tests
+jupyter
+nbclient
+pytest>=8

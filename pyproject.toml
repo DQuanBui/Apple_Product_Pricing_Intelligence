@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apple-pricing"
+version = "2.0.0"
+description = "Apple product pricing intelligence: S3 -> Snowflake/DuckDB -> dbt -> CatBoost forecasts -> Streamlit / Power BI"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

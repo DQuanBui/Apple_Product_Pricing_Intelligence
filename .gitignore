@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Secrets / local config
+.env
+.streamlit/secrets.toml
+
+# Local warehouse (rebuilt by `python -m apple_pricing.pipeline`)
+warehouse/
+data/lake/
+
+# dbt build artifacts
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+logs/
+
+# Trained model binaries (large; metrics + predictions are exported to data/marts/)
+artifacts/models/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
