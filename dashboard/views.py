@@ -431,7 +431,10 @@ def forecasts(filters: dict) -> None:
         title=f"Top features · {name} model (CatBoost importance)", labels={"x": "Importance", "y": ""},
     )
     show(figure, 420)
-    st.caption("Calendar features (week of year, month) dominate: sale seasons and the September launch cycle drive most price moves.")
+    st.caption(
+        "The model mainly learns timing (week of year, month, days since release: sale seasons and the September "
+        "launch cycle) and mean reversion (how far today's price sits from its normal level)."
+    )
 
 
 # --------------------------------------------------------------------------- buy or wait
