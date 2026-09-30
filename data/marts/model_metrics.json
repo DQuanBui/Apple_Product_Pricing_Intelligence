@@ -1,0 +1,216 @@
+{
+  "trained_at": "2026-09-30T22:58:49",
+  "quantiles": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "features": [
+    "platform",
+    "product_category",
+    "model_name",
+    "condition",
+    "sale_event",
+    "log_price",
+    "launch_price_usd",
+    "price_index",
+    "listing_count",
+    "spread_pct",
+    "avg_rating",
+    "median_reviews",
+    "in_stock_share",
+    "out_of_stock_share",
+    "is_sale_event",
+    "days_since_release",
+    "is_successor_released",
+    "days_since_successor_release",
+    "month",
+    "week_of_year",
+    "day_of_week",
+    "ret_7d",
+    "ret_14d",
+    "ret_30d",
+    "ret_60d",
+    "vs_roll_mean_7d",
+    "vs_roll_mean_30d",
+    "vs_roll_mean_90d",
+    "vs_roll_min_90d",
+    "vs_roll_max_90d",
+    "roll_std_30d_pct",
+    "roll_count_30d",
+    "vs_baseline_30obs",
+    "vs_other_platform"
+  ],
+  "horizons": {
+    "7d": {
+      "horizon_days": 7,
+      "model": {
+        "MAE": 14.601182019407961,
+        "RMSE": 27.586718609084063,
+        "WAPE_pct": 1.9503276987419562,
+        "MAPE_pct": 2.1096641481868295,
+        "R2": 0.9962872074704078,
+        "n": 7431
+      },
+      "baseline_naive_last_price": {
+        "MAE": 23.211039235527398,
+        "RMSE": 49.2435177442292,
+        "WAPE_pct": 3.100374522929956,
+        "MAPE_pct": 3.360999012730153,
+        "R2": 0.9881696190228572,
+        "n": 7431
+      },
+      "baseline_trailing_30d_mean": {
+        "MAE": 18.118229426278987,
+        "RMSE": 38.66284313640157,
+        "WAPE_pct": 2.4201112386150703,
+        "MAPE_pct": 2.6466982446665623,
+        "R2": 0.9927073030544222,
+        "n": 7431
+      },
+      "mae_improvement_vs_naive_pct": 37.093803206109676,
+      "mae_improvement_vs_trailing_30d_pct": 19.411650686848244,
+      "p10_p90_interval_coverage_pct": 84.33589018974565,
+      "p10_p90_raw_quantile_coverage_pct": 77.72843493473287,
+      "conformal_margin_log": 0.0022605985225940513,
+      "mae_by_category": {
+        "Mac": {
+          "model_mae": 26.52,
+          "naive_mae": 42.47999954223633,
+          "trailing_30d_mae": 34.23
+        },
+        "Watch": {
+          "model_mae": 6.37,
+          "naive_mae": 10.180000305175781,
+          "trailing_30d_mae": 7.71
+        },
+        "iPad": {
+          "model_mae": 11.9,
+          "naive_mae": 18.8799991607666,
+          "trailing_30d_mae": 15.67
+        },
+        "iPhone": {
+          "model_mae": 13.23,
+          "naive_mae": 20.81999969482422,
+          "trailing_30d_mae": 15.37
+        }
+      },
+      "split": {
+        "train_end_exclusive": "2025-07-09",
+        "validation_start": "2025-07-19",
+        "validation_end_exclusive": "2026-01-15",
+        "test_start": "2026-01-25",
+        "test_end": "2026-07-24",
+        "embargo_days": 10
+      },
+      "rows": {
+        "train": 30970,
+        "validation": 7162,
+        "test": 7431
+      },
+      "best_iterations": 290,
+      "top_features": {
+        "week_of_year": 32.09,
+        "roll_std_30d_pct": 8.56,
+        "month": 7.81,
+        "condition": 6.91,
+        "sale_event": 6.47,
+        "vs_roll_mean_30d": 5.41,
+        "is_sale_event": 5.08,
+        "days_since_release": 4.41,
+        "vs_baseline_30obs": 3.86,
+        "platform": 2.99,
+        "vs_roll_max_90d": 1.98,
+        "ret_7d": 1.69,
+        "ret_14d": 1.67,
+        "ret_30d": 1.44,
+        "vs_other_platform": 1.44
+      }
+    },
+    "30d": {
+      "horizon_days": 30,
+      "model": {
+        "MAE": 16.704673362183406,
+        "RMSE": 31.679790071834837,
+        "WAPE_pct": 2.227166429299496,
+        "MAPE_pct": 2.3841672906425195,
+        "R2": 0.9950996863138255,
+        "n": 7362
+      },
+      "baseline_naive_last_price": {
+        "MAE": 21.353159752399886,
+        "RMSE": 42.13012288962042,
+        "WAPE_pct": 2.8469302888421253,
+        "MAPE_pct": 3.132482882048059,
+        "R2": 0.9913334800041941,
+        "n": 7362
+      },
+      "baseline_trailing_30d_mean": {
+        "MAE": 18.302249246411712,
+        "RMSE": 38.434775773512335,
+        "WAPE_pct": 2.4401647502164803,
+        "MAPE_pct": 2.6756783412006246,
+        "R2": 0.9927871318231157,
+        "n": 7362
+      },
+      "mae_improvement_vs_naive_pct": 21.76954813300657,
+      "mae_improvement_vs_trailing_30d_pct": 8.72885000482398,
+      "p10_p90_interval_coverage_pct": 82.80358598207009,
+      "p10_p90_raw_quantile_coverage_pct": 70.75522955718554,
+      "conformal_margin_log": 0.004952057082659107,
+      "mae_by_category": {
+        "Mac": {
+          "model_mae": 30.91,
+          "naive_mae": 40.380001068115234,
+          "trailing_30d_mae": 35.37
+        },
+        "Watch": {
+          "model_mae": 6.86,
+          "naive_mae": 9.020000457763672,
+          "trailing_30d_mae": 7.24
+        },
+        "iPad": {
+          "model_mae": 14.33,
+          "naive_mae": 17.40999984741211,
+          "trailing_30d_mae": 17.14
+        },
+        "iPhone": {
+          "model_mae": 14.78,
+          "naive_mae": 18.600000381469727,
+          "trailing_30d_mae": 14.92
+        }
+      },
+      "split": {
+        "train_end_exclusive": "2025-05-01",
+        "validation_start": "2025-06-03",
+        "validation_end_exclusive": "2025-11-30",
+        "test_start": "2026-01-02",
+        "test_end": "2026-07-01",
+        "embargo_days": 33
+      },
+      "rows": {
+        "train": 28393,
+        "validation": 7003,
+        "test": 7362
+      },
+      "best_iterations": 583,
+      "top_features": {
+        "week_of_year": 30.74,
+        "month": 20.0,
+        "days_since_release": 14.36,
+        "is_sale_event": 9.48,
+        "vs_baseline_30obs": 3.18,
+        "condition": 3.02,
+        "vs_roll_mean_30d": 2.51,
+        "ret_14d": 1.78,
+        "product_category": 1.77,
+        "log_price": 1.41,
+        "price_index": 1.32,
+        "vs_roll_max_90d": 1.23,
+        "launch_price_usd": 1.14,
+        "sale_event": 1.01,
+        "platform": 0.9
+      }
+    }
+  }
+}
