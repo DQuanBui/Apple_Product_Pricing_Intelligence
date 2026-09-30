@@ -1,7 +1,0 @@
-1. The category with the highest average market price is Mac.
-2. The category retaining the highest percentage of its original MSRP is Mac.
-3. The event with the highest average discount is Big Billion Days.
-4. The product most frequently trading above MSRP is iPhone 17 128GB.
-5. In matched product comparisons, Amazon was cheaper approximately 50.4% of the time.
-6. The seven-day forecast achieved an MAE of $17.97, improving over the naive baseline by 20.16%.
-7. The 30-day forecast achieved an MAE of $17.50, improving over the naive baseline by 13.99%.

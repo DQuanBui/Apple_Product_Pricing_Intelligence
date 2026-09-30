@@ -1,6 +1,6 @@
 # Streamlit app runtime (this file is what Streamlit Community Cloud installs).
 # The data pipeline has its own requirements in requirements-pipeline.txt.
-streamlit>=1.40
+streamlit>=1.50
 pandas>=2.2
 numpy>=1.26
 plotly>=5.20
