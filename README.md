@@ -10,6 +10,7 @@ Raw data lands in **AWS S3** as partitioned Parquet and is loaded into **Snowfla
 The project answers how Apple products lose value over their life cycle, what new launches and sale events really do to prices, whether one marketplace is cheaper, and when a buyer should buy or wait.
 
 - **Dataset:** [Apple Products Pricing Dataset (Kaggle)](https://www.kaggle.com/datasets/rhlvrm34/apple-dataset)
+- **Full report:** [Final report (PDF)](reports/final_report.pdf) · [Markdown version](reports/final_report.md)
 
 ## Live Application
 
@@ -187,8 +188,6 @@ pytest
 ```bash
 python -m apple_pricing.pipeline --target prod --bucket <your-bucket>
 ```
-
-**AI Analyst.** Add `ANTHROPIC_API_KEY` to `.streamlit/secrets.toml` locally, or to the app's secrets on Streamlit Community Cloud.
 
 ## Contacts
 For any inquiries or questions regarding the project, please contact me at: dbui10@fordham.edu

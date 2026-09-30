@@ -17,7 +17,8 @@ statsmodels>=0.14
 matplotlib>=3.8
 seaborn>=0.13
 
-# Notebook + tests
+# Notebook, report, and tests
+markdown>=3.5
 jupyter
 nbclient
 pytest>=8
