@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: mart_deal_scores
+    description: >
+      Buy-now / wait recommendation and 0-100 deal score for every listing series,
+      built from the calibrated CatBoost forecasts in source `ml.forecast_latest`.
+    config:
+      tags: ["ml"]
+    columns:
+      - name: series_id
+        data_tests: [unique, not_null]
+      - name: recommendation
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Buy now", "Wait", "No rush"]
+      - name: deal_score
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100
+      - name: forecast_30d_usd
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
