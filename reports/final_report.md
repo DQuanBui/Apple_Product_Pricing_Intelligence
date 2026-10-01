@@ -268,17 +268,17 @@ Because the rules are written in SQL inside dbt, they are version-controlled, te
 
 ## 10. Delivery: Dashboard, AI Analyst, and Power BI
 
-**Streamlit dashboard** ([live app](https://applepricing.streamlit.app/)). Nine tabs with filters for category, platform, condition, and date:
+**Streamlit dashboard** ([live app](https://applepricing.streamlit.app/)). Nine pages with top navigation, each opening with its finding:
 
-1. **Overview:** KPIs, key findings, value-retention curves.
-2. **Price Explorer:** daily price history for any model.
-3. **Depreciation & Launches:** depreciation curves and the successor cliff.
-4. **Sale Events:** headline vs real savings.
-5. **Platforms & Condition:** the Amazon vs Flipkart gap and refurbished discounts.
-6. **Forecasts:** accuracy vs baselines and backtests with ranges.
-7. **Buy or Wait:** the recommendation table.
-8. **AI Analyst.**
-9. **Data & Pipeline:** lineage and dbt test status.
+1. **Overview:** the price staircase, headline numbers, four key findings, and today's best deals.
+2. **Price explorer:** daily price history for any model, compared with its category.
+3. **Life cycle:** depreciation curves, a model-by-month heatmap, and the successor cliff for every model.
+4. **Sale events:** advertised vs real savings, by category and by year.
+5. **Marketplaces:** the Amazon vs Flipkart gap and refurbished discounts.
+6. **Forecasts:** accuracy vs baselines, model drivers, and backtests with ranges.
+7. **Buy or wait:** top picks and the full recommendation table.
+8. **Ask the data:** the Claude AI analyst.
+9. **About:** motivation, architecture, and dbt test status.
 
 The dashboard reads small exports of the dbt marts, so the public app needs no database credentials.
 

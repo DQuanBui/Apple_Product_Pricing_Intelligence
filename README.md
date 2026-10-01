@@ -123,19 +123,19 @@ The forecasts feed a dbt mart (`mart_deal_scores`) that labels each of the 124 p
 
 ## Application Features
 
-The Streamlit application allows users to:
+The Streamlit application has nine pages with top navigation. Each page opens with its finding in plain words, then the charts that carry it:
 
-- **Overview:** view headline KPIs, key findings, the dbt test status, and value retention by category
-- **Price Explorer:** see any model's daily price by platform and condition, with MSRP, sale-event days, and successor launch marked
-- **Depreciation & Launches:** compare depreciation curves and see the successor-launch cliff for every model
-- **Sale Events:** compare the headline discount with real savings against the normal price, by event and category
-- **Platforms & Condition:** review the matched Amazon vs Flipkart gap distribution and refurbished discounts by model
-- **Forecasts:** check model vs baseline accuracy, a backtest with the P10–P90 band for any series, and feature importance
-- **Buy or Wait:** get a recommendation, the reason, the 7/30-day forecasts, and a deal score for every series
-- **AI Analyst:** ask questions in plain English. Claude writes read-only SQL against the marts in a sandboxed in-memory DuckDB (a single SELECT only, with file access disabled and configuration locked) and shows every query it ran.
-- **Data & Pipeline:** see the pipeline lineage, the latest dbt build results, and the data dictionary
+- **Overview:** the price "staircase" (value retention after release), headline numbers, four key findings, and today's best deals
+- **Price explorer:** any model's daily price on both marketplaces, with launch price, sale-event days, and the successor launch marked, compared with its category
+- **Life cycle:** depreciation curves for new and refurbished units, a model-by-month heatmap of every product, and the successor-launch drop for all 21 models
+- **Sale events:** advertised vs real saving per event, savings by category and by year, and the average dollar saving
+- **Marketplaces:** the matched Amazon vs Flipkart gap, its trend by quarter, the typical gap by category, and refurbished discounts by model
+- **Forecasts:** accuracy against two baselines by category and horizon, what the model relies on, and a forecast-vs-actual chart with the 80% range for any series
+- **Buy or wait:** a recommendation, reason, forecast range, and deal score for every series, with top-pick tiles
+- **Ask the data:** plain-English questions answered by Claude, which writes read-only SQL against the marts in a sandboxed in-memory DuckDB (a single SELECT only, with file access disabled and configuration locked) and shows every query it ran
+- **About:** why the project exists, the pipeline architecture, dbt test results, and the data dictionary
 
-Sidebar filters for category, platform, condition, and date range apply across tabs.
+Filters (category, platform, condition) sit inline on the pages that use them. The design uses one consistent, colour-blind-safe palette in which each category and marketplace keeps the same colour everywhere.
 
 **Power BI report.** [`powerbi/ApplePricing.pbip`](powerbi/README.md) is a six-page interactive Power BI report:
 - Pages: Executive Overview, Price Explorer, Life Cycle & Launches, Sale Events, Marketplaces & Condition, and Forecasts & Buy or Wait.
